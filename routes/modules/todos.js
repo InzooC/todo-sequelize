@@ -19,6 +19,15 @@ router.post('/', (req, res) => {
     .then(() => res.redirect('/')) //完成新增之後，重新導回首頁
     .catch(error => console.log(error))
 })
+//刪除
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  return Todo.destroy({
+    where: { id }
+  })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 //查看詳細頁
 router.get('/:id', (req, res) => {
   const id = req.params.id
